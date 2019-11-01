@@ -1,0 +1,11 @@
+.mainContainer {
+  margin: 24px;
+}
+
+.inviteButtonContainer {
+  display: flex;
+  flex-direction: column;
+  .inviteButton {
+    margin-top: 24px;
+  }
+}

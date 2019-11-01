@@ -1,0 +1,33 @@
+<div class="mainContainer">
+  <h1>
+    Silph Format Pokémon GO battle!
+  </h1>
+  <p>
+    Choose a party of 6 for you to battle!
+  </p>
+  <app-pokemon-list
+    [allPokemonNames]="allPokemonNames$ | async"
+    [team]="Team.A"
+    (removePokemon)="refreshPage($event)"
+    (choosePokemon)="refreshPage($event)"
+  ></app-pokemon-list>
+  <app-pokemon-list
+    [allPokemonNames]="allPokemonNames$ | async"
+    [team]="Team.B"
+    (removePokemon)="refreshPage($event)"
+    (choosePokemon)="refreshPage($event)"
+  ></app-pokemon-list>
+  <div class="inviteButtonContainer">
+    <button
+      class="inviteButton"
+      appCopyClipboard
+      [payload]="getCurrentUrl()"
+      (copied)="notifyCopy($event)"
+      mat-raised-button
+      color="primary"
+    >
+      Click to copy battle link!
+    </button>
+  </div>
+  <app-footer></app-footer>
+</div>

@@ -1,0 +1,49 @@
+<div class="pokemonListContainer">
+  <span class="trainerHeaderContainer">
+    <h3 class="trainerHeader">
+      Trainer {{ team | uppercase }}
+      chose:
+    </h3>
+  </span>
+  <div class="chosenPokemonList">
+    <ng-container *ngFor="let chosen of chosenPokemon">
+      <div
+        class="chosenPokemonItem cursorPointer"
+        (click)="onRemovePokemon(chosen)"
+      >
+        <ng-container *ngIf="getPokemonSprite(chosen) | async as pokemonSprite">
+          <img [src]="pokemonSprite" class="pokemonDisplay" />
+        </ng-container>
+        {{ chosen | pokemonName }}
+      </div>
+    </ng-container>
+  </div>
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      [formControl]="pokemonAutocompleteControl"
+      [matAutocomplete]="auto"
+      (input)="validateAutocomplete()"
+      placeholder="Type in a Pokémon name"
+      autofocus
+    />
+  </mat-form-field>
+  <button (click)="clearPokemon()" mat-raised-button color="warn">
+    Clear Selections
+  </button>
+
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    (optionSelected)="onChoosePokemon($event)"
+    [autoActiveFirstOption]="true"
+  >
+    <ng-container *ngIf="!pokemonAutocompleteControl.invalid">
+      <mat-option
+        *ngFor="let pokemonName of searchResults$ | async"
+        [value]="pokemonName"
+        >{{ pokemonName | pokemonName }}</mat-option
+      >
+    </ng-container>
+  </mat-autocomplete>
+</div>

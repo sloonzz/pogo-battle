@@ -1,0 +1,10 @@
+.chosenPokemonList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.chosenPokemonItem {
+  display: flex;
+}
+.mainContainer {
+  margin: 24px;
+}

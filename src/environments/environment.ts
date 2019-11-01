@@ -3,7 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyBL8meCOxmmAOAZnB1_tno3EjwMETEekNk',
+    authDomain: 'pogo-battle-7868d.firebaseapp.com',
+    databaseURL: 'https://pogo-battle-7868d.firebaseio.com',
+    projectId: 'pogo-battle-7868d',
+    storageBucket: 'pogo-battle-7868d.appspot.com',
+    messagingSenderId: '774838234136',
+    appId: '1:774838234136:web:b0a5629924d9caab62a76d',
+    measurementId: 'G-4JLEPVZYMQ'
+  },
+  pokemonApi: {
+    baseUrl: 'https://pokeapi.co/api/v2/'
+  }
 };
 
 /*

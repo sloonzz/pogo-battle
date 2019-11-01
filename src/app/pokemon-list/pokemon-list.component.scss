@@ -1,0 +1,65 @@
+@import '../app.component.scss';
+$small-icon-size: 12px;
+$icon-size: 16px;
+$large-icon-size: 26px;
+
+.pokemonListContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.chosenPokemonList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+.trainerHeaderContainer {
+  display: flex;
+  .editTrainerNameIcon {
+    font-size: $small-icon-size;
+    height: $small-icon-size;
+    width: $small-icon-size;
+  }
+}
+
+.chosenPokemonItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 26%;
+  .pokemonDisplay {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (min-width: $tablet) {
+  .chosenPokemonItem {
+    flex: none;
+    .removePokemonIcon {
+      font-size: $large-icon-size;
+      height: $large-icon-size;
+      width: $large-icon-size;
+    }
+    .pokemonDisplay {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+.mainContainer {
+  margin: 24px;
+}
+
+.mat-icon-button {
+  width: 24px;
+  height: 24px;
+}
