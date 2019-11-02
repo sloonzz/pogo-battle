@@ -8,8 +8,15 @@ import { MatSnackBar } from '@angular/material';
 import { CopyClipboardComponent } from '../snack-bars/copy-clipboard/copy-clipboard/copy-clipboard.component';
 
 export enum Team {
-  A = 'a',
-  B = 'b'
+  A = 'You',
+  B = 'The opponent'
+}
+
+export enum Steps {
+  ChoosePokemon = 1,
+  SendInvite = 2,
+  ChoosePokemonB = 3,
+  SendInviteB = 4
 }
 
 @Component({
