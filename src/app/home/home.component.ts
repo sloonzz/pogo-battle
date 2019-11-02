@@ -9,7 +9,7 @@ import { CopyClipboardComponent } from '../snack-bars/copy-clipboard/copy-clipbo
 
 export enum Team {
   A = 'You',
-  B = 'The opponent'
+  B = 'Opponent'
 }
 
 export enum Steps {
