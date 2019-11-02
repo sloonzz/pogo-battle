@@ -108,7 +108,9 @@ export class PokemonListComponent implements OnInit {
   getPokemonSprite(name: string): Rx.Observable<string> {
     return this.pokemonService.fetchByName(name).pipe(
       map(res => {
-        return res.sprites.front_default;
+        return (
+          res.sprites.front_default || `assets/pokemon-sprites/${name}.png`
+        );
       })
     );
   }

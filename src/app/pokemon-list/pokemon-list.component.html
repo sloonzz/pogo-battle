@@ -12,7 +12,11 @@
         (click)="onRemovePokemon(chosen)"
       >
         <ng-container *ngIf="getPokemonSprite(chosen) | async as pokemonSprite">
-          <img [src]="pokemonSprite" class="pokemonDisplay" />
+          <img
+            [src]="pokemonSprite"
+            onerror="this.src='assets/placeholders/pokeball.png';"
+            class="pokemonDisplay"
+          />
         </ng-container>
         {{ chosen | pokemonName }}
       </div>
