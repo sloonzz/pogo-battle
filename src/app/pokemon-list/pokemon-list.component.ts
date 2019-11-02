@@ -1,20 +1,11 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-  ViewChild,
-  ElementRef
-} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Team } from '../home/home.component';
 import * as Rx from 'rxjs';
 import { FormControl } from '@angular/forms';
-import { map, filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
 import { PokemonService } from '../services/pokemon.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { lessThanSixValidator } from '../validators/validators';
 
 @Component({
   selector: 'app-pokemon-list',

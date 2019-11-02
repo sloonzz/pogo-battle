@@ -11,17 +11,15 @@
     (removePokemon)="refreshPage($event)"
     (choosePokemon)="refreshPage($event)"
   ></app-pokemon-list>
-  <app-pokemon-list
-    [allPokemonNames]="allPokemonNames$ | async"
-    [team]="Team.B"
-    (removePokemon)="refreshPage($event)"
-    (choosePokemon)="refreshPage($event)"
-  ></app-pokemon-list>
+  <p>
+    After selecting your party, press the copy battle link button below and send
+    it to your opponent until you both have a complete party!
+  </p>
   <div class="inviteButtonContainer">
     <button
       class="inviteButton"
       appCopyClipboard
-      [payload]="getCurrentUrl()"
+      [payload]="generateBattleLink()"
       (copied)="notifyCopy()"
       mat-raised-button
       color="primary"
@@ -29,5 +27,11 @@
       Click to copy battle link!
     </button>
   </div>
+  <app-pokemon-list
+    [allPokemonNames]="allPokemonNames$ | async"
+    [team]="Team.B"
+    (removePokemon)="refreshPage($event)"
+    (choosePokemon)="refreshPage($event)"
+  ></app-pokemon-list>
   <app-footer></app-footer>
 </div>

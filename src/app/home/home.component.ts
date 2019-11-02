@@ -26,6 +26,10 @@ export enum Steps {
 })
 export class HomeComponent implements OnInit {
   allPokemonNames$: Rx.Observable<string[]>;
+  chosenPokemonMap: { [key in Team]: string[] } = {
+    [Team.A]: [],
+    [Team.B]: []
+  };
   Team = Team;
   constructor(
     private pokemonService: PokemonService,
@@ -35,8 +39,18 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log('INIT!');
     this.allPokemonNames$ = Rx.of(this.pokemonService.getAllPokemonNames());
+    this.route.queryParams.subscribe(params => {
+      for (const key of Object.values(Team)) {
+        if (params[key]) {
+          if (params[key] instanceof Array) {
+            this.chosenPokemonMap[key] = [...params[key]];
+          } else {
+            this.chosenPokemonMap[key] = [params[key]];
+          }
+        }
+      }
+    });
   }
 
   refreshPage(event: { chosenPokemon: ReadonlyArray<string>; team: Team }) {
@@ -49,8 +63,14 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  getCurrentUrl(): string {
-    return window.location.href;
+  generateBattleLink(): string {
+    return (
+      window.location.host +
+      '/?' +
+      // Reverse the teams so your team is the opponent's team in your opponent's view
+      this.chosenPokemonMap[Team.A].map(opp => Team.B + '=' + opp).join('&') +
+      this.chosenPokemonMap[Team.B].map(you => Team.A + '=' + you).join('&')
+    );
   }
 
   notifyCopy() {
