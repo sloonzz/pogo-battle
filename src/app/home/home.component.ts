@@ -69,6 +69,7 @@ export class HomeComponent implements OnInit {
       '/?' +
       // Reverse the teams so your team is the opponent's team in your opponent's view
       this.chosenPokemonMap[Team.A].map(opp => Team.B + '=' + opp).join('&') +
+      '&' +
       this.chosenPokemonMap[Team.B].map(you => Team.A + '=' + you).join('&')
     );
   }
