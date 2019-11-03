@@ -33,6 +33,16 @@
         COPY BATTLE LINK
       </span>
     </button>
+    <br />
+    <small>...or if that didn't work, copy it yourself:</small>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        [value]="generateBattleLink()"
+        (click)="$event.target.select()"
+      />
+    </mat-form-field>
   </div>
   <app-pokemon-list
     [allPokemonNames]="allPokemonNames$ | async"
