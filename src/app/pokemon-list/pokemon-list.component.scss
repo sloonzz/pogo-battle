@@ -11,7 +11,7 @@ $large-icon-size: 26px;
 .chosenPokemonList {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 12px;
 }
 
@@ -34,6 +34,7 @@ $large-icon-size: 26px;
   justify-content: center;
   align-items: center;
   flex: 1 0 26%;
+  text-align: center;
   .pokemonDisplay {
     width: 70px;
     height: 70px;

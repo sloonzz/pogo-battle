@@ -30,6 +30,8 @@ export class PokemonListComponent implements OnInit {
   trainerQueryKey = 'trainer';
   trainer: string | undefined;
 
+  Team = Team;
+
   constructor(
     private pokemonService: PokemonService,
     private route: ActivatedRoute,

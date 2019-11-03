@@ -1,10 +1,38 @@
 <div class="pokemonListContainer">
   <span class="trainerHeaderContainer">
     <h3 class="trainerHeader">
-      {{ team }}
-      chose:
+      {{ team === Team.A ? 'YOUR ' : "OPPONENT'S " }}
+      BATTLE PARTY:
     </h3>
   </span>
+  <ng-container *ngIf="chosenPokemon.length < 6">
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        [formControl]="pokemonAutocompleteControl"
+        [matAutocomplete]="auto"
+        (input)="validateAutocomplete()"
+        placeholder="Type in a Pokémon name"
+        autofocus
+      />
+    </mat-form-field>
+
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="onChoosePokemon($event)"
+      [autoActiveFirstOption]="true"
+    >
+      <ng-container *ngIf="!pokemonAutocompleteControl.invalid">
+        <mat-option
+          *ngFor="let pokemonName of searchResults$ | async"
+          [value]="pokemonName"
+          >{{ pokemonName | pokemonName }}</mat-option
+        >
+      </ng-container>
+    </mat-autocomplete>
+  </ng-container>
+
   <div class="chosenPokemonList">
     <ng-container *ngFor="let chosen of chosenPokemon">
       <div
@@ -22,32 +50,7 @@
       </div>
     </ng-container>
   </div>
-  <mat-form-field>
-    <input
-      type="text"
-      matInput
-      [formControl]="pokemonAutocompleteControl"
-      [matAutocomplete]="auto"
-      (input)="validateAutocomplete()"
-      placeholder="Type in a Pokémon name"
-      autofocus
-    />
-  </mat-form-field>
   <button (click)="clearPokemon()" mat-raised-button color="warn">
-    Clear Selections
+    CLEAR SELECTION
   </button>
-
-  <mat-autocomplete
-    #auto="matAutocomplete"
-    (optionSelected)="onChoosePokemon($event)"
-    [autoActiveFirstOption]="true"
-  >
-    <ng-container *ngIf="!pokemonAutocompleteControl.invalid">
-      <mat-option
-        *ngFor="let pokemonName of searchResults$ | async"
-        [value]="pokemonName"
-        >{{ pokemonName | pokemonName }}</mat-option
-      >
-    </ng-container>
-  </mat-autocomplete>
 </div>

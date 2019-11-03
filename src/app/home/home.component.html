@@ -3,13 +3,12 @@
     Silph Format Pokémon GO battle!
   </h1>
   <p>
-    Choose a party of 6 for you to battle with! Press on your selections to
-    remove them from the team.
+    Choose a party of six to battle with! To remove a Pokémon from the
+    selection, simply tap on its sprite.
   </p>
   <small
-    >Note: Some of the sprites may take time to load and others may not load at
-    all as they are not currently available from where the site fetches
-    them.</small
+    >Note: Some of the sprites may take time to load while others might not load
+    at all as the assets are unavailable. Thank you for understanding.</small
   >
   <app-pokemon-list
     [allPokemonNames]="allPokemonNames$ | async"
@@ -18,8 +17,8 @@
     (choosePokemon)="refreshPage($event)"
   ></app-pokemon-list>
   <p>
-    After selecting your party, press the copy battle link button below and send
-    it to your opponent until you both have a complete party!
+    After choosing your party, click the COPY BATTLE LINK button and share it
+    with your opponent. Ask your opponent to do the same.
   </p>
   <div class="inviteButtonContainer">
     <button
@@ -30,7 +29,9 @@
       mat-raised-button
       color="primary"
     >
-      Click to copy battle link!
+      <span style="color: white">
+        COPY BATTLE LINK
+      </span>
     </button>
   </div>
   <app-pokemon-list
