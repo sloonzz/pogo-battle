@@ -10,6 +10,18 @@
     >Note: Some of the sprites may take time to load while others might not load
     at all as the assets are unavailable. Thank you for understanding.</small
   >
+  <br />
+  <div *ngIf="isCompleteTeams()" class="battleViewNoticeContainer">
+    <p>
+      You and your opponent's teams are complete, click the VIEW TEAMS button to
+      compare them side-by-side. Good luck battling!
+    </p>
+    <button (click)="showBattleViewModal()" mat-raised-button color="primary">
+      <span class="buttonTextWhite">
+        VIEW TEAMS
+      </span>
+    </button>
+  </div>
   <app-pokemon-list
     [allPokemonNames]="allPokemonNames$ | async"
     [team]="Team.A"

@@ -107,6 +107,7 @@ export class PokemonListComponent implements OnInit {
     console.log(this.trainerNameControl.value);
   }
 
+  // TODO: Put this in a service or somewhere reusable
   getPokemonSprite(name: string): Rx.Observable<string> {
     return this.pokemonService.fetchByName(name).pipe(
       map(res => {

@@ -4,8 +4,9 @@ import * as Rx from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { CopyClipboardComponent } from '../snack-bars/copy-clipboard/copy-clipboard/copy-clipboard.component';
+import { BattleViewModalComponent } from '../modals/battle-view-modal/battle-view-modal.component';
 
 export enum Team {
   A = 'a',
@@ -35,7 +36,8 @@ export class HomeComponent implements OnInit {
     private pokemonService: PokemonService,
     private router: Router,
     private route: ActivatedRoute,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -77,6 +79,19 @@ export class HomeComponent implements OnInit {
   notifyCopy() {
     this.snackBar.openFromComponent(CopyClipboardComponent, {
       duration: 5000
+    });
+  }
+
+  isCompleteTeams(): boolean {
+    return (
+      this.chosenPokemonMap[Team.A].length === 6 &&
+      this.chosenPokemonMap[Team.B].length === 6
+    );
+  }
+
+  showBattleViewModal() {
+    const dialogRef = this.dialog.open(BattleViewModalComponent, {
+      data: { chosenPokemonMap: this.chosenPokemonMap }
     });
   }
 }

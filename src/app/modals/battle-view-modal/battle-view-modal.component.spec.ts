@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BattleViewComponent } from './battle-view.component';
+import { BattleViewModalComponent } from './battle-view-modal.component';
 
-describe('BattleViewComponent', () => {
-  let component: BattleViewComponent;
-  let fixture: ComponentFixture<BattleViewComponent>;
+describe('BattleViewModalComponent', () => {
+  let component: BattleViewModalComponent;
+  let fixture: ComponentFixture<BattleViewModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BattleViewComponent ]
+      declarations: [ BattleViewModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BattleViewComponent);
+    fixture = TestBed.createComponent(BattleViewModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

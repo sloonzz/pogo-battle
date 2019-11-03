@@ -1,0 +1,31 @@
+<!-- TODO: Make this reusable along with pokemon-list component -->
+<h1>YOUR BATTLE PARTY</h1>
+<div class="chosenPokemonList">
+  <ng-container *ngFor="let chosen of data.chosenPokemonMap[Team.A]">
+    <div class="chosenPokemonItem cursorPointer">
+      <ng-container *ngIf="getPokemonSprite(chosen) | async as pokemonSprite">
+        <img
+          [src]="pokemonSprite"
+          onerror="this.src='assets/placeholders/pokeball.png';"
+          class="pokemonDisplay"
+        />
+      </ng-container>
+      {{ chosen | pokemonName }}
+    </div>
+  </ng-container>
+</div>
+<h1>OPPONENT'S BATTLE PARTY</h1>
+<div class="chosenPokemonList">
+  <ng-container *ngFor="let chosen of data.chosenPokemonMap[Team.B]">
+    <div class="chosenPokemonItem">
+      <ng-container *ngIf="getPokemonSprite(chosen) | async as pokemonSprite">
+        <img
+          [src]="pokemonSprite"
+          onerror="this.src='assets/placeholders/pokeball.png';"
+          class="pokemonDisplay"
+        />
+      </ng-container>
+      {{ chosen | pokemonName }}
+    </div>
+  </ng-container>
+</div>
