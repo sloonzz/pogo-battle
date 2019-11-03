@@ -16,9 +16,12 @@
       You and your opponent's teams are complete, click the VIEW TEAMS button to
       compare them side-by-side. Good luck battling!
     </p>
-    <button (click)="showBattleViewModal()" mat-raised-button color="primary">
-      <span class="buttonTextWhite">
-        VIEW TEAMS
+    <button (click)="showBattleView()" mat-raised-button color="primary">
+      <span *ngIf="isShowingTeams" class="buttonTextWhite">
+        VIEW BATTLE LINK
+      </span>
+      <span *ngIf="!isShowingTeams" class="buttonTextWhite">
+        VIEW TEAMS ONLY
       </span>
     </button>
   </div>
@@ -28,34 +31,36 @@
     (removePokemon)="refreshPage($event)"
     (choosePokemon)="refreshPage($event)"
   ></app-pokemon-list>
-  <p>
-    After choosing your party, click the COPY BATTLE LINK button and share it
-    with your opponent. Ask your opponent to do the same.
-  </p>
-  <div class="inviteButtonContainer">
-    <button
-      class="inviteButton"
-      appCopyClipboard
-      [payload]="generateBattleLink()"
-      (copied)="notifyCopy()"
-      mat-raised-button
-      color="primary"
-    >
-      <span class="buttonTextWhite">
-        COPY BATTLE LINK
-      </span>
-    </button>
-    <br />
-    <small>...or if that didn't work, copy it yourself:</small>
-    <mat-form-field>
-      <input
-        matInput
-        type="text"
-        [value]="generateBattleLink()"
-        (click)="$event.target.select()"
-      />
-    </mat-form-field>
-  </div>
+  <ng-container *ngIf="!isShowingTeams || !isCompleteTeams()">
+    <p>
+      After choosing your party, click the COPY BATTLE LINK button and share it
+      with your opponent. Ask your opponent to do the same.
+    </p>
+    <div class="inviteButtonContainer">
+      <button
+        class="inviteButton"
+        appCopyClipboard
+        [payload]="generateBattleLink()"
+        (copied)="notifyCopy()"
+        mat-raised-button
+        color="primary"
+      >
+        <span class="buttonTextWhite">
+          COPY BATTLE LINK
+        </span>
+      </button>
+      <br />
+      <small>...or if that didn't work, copy it yourself:</small>
+      <mat-form-field>
+        <input
+          matInput
+          type="text"
+          [value]="generateBattleLink()"
+          (click)="$event.target.select()"
+        />
+      </mat-form-field>
+    </div>
+  </ng-container>
   <app-pokemon-list
     [allPokemonNames]="allPokemonNames$ | async"
     [team]="Team.B"

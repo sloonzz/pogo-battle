@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
     [Team.B]: []
   };
   Team = Team;
+  isShowingTeams: boolean;
   constructor(
     private pokemonService: PokemonService,
     private router: Router,
@@ -89,5 +90,13 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(BattleViewModalComponent, {
       data: { chosenPokemonMap: this.chosenPokemonMap }
     });
+  }
+
+  showBattleView() {
+    if (this.isCompleteTeams()) {
+      this.isShowingTeams = !this.isShowingTeams;
+    } else {
+      this.isShowingTeams = false;
+    }
   }
 }
