@@ -7,11 +7,7 @@ import { FormControl } from '@angular/forms';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { CopyClipboardComponent } from '../snack-bars/copy-clipboard/copy-clipboard/copy-clipboard.component';
 import { BattleViewModalComponent } from '../modals/battle-view-modal/battle-view-modal.component';
-
-export enum Team {
-  A = 'a',
-  B = 'b'
-}
+import { Team } from '../interfaces/team';
 
 export enum Steps {
   ChoosePokemon = 1,
